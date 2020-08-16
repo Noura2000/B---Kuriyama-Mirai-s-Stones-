@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    int n,m,l,r,o,a[100011];
+ 
+  cin >>n;
+  long long cum1[n+1]={0},cum2[n+1]={0};
+    for (int i=1;i<=n;++i){
+        cin >>a[i];
+        cum1[i]=cum1[i-1]+a[i];
+    }
+      sort(a+1,a+n+1);
+    for (int i=1;i<=n;++i){
+        cum2[i]=cum2[i-1]+a[i];
+    }
+    cin >>m;
+    while (m--){
+        cin >>o>>l>>r;
+        if (o==1){
+            cout <<cum1[r]-cum1[l-1]<<endl;
+        }
+        else {
+           cout <<cum2[r]-cum2[l-1]<<endl;
+        }
+    }
+    return 0;
+}
